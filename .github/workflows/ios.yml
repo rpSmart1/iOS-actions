@@ -1,3 +1,11 @@
+name: iOS Starter Workflow
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
 jobs:
   build:
     runs-on: macos-14
@@ -43,6 +51,7 @@ jobs:
             -sdk iphonesimulator \
             -destination 'platform=iOS Simulator,name=iPhone 16 Plus,OS=18.1' \
             ONLY_ACTIVE_ARCH=YES | xcpretty
+
 
       - name: Notify Teams on Failure
         if: failure()
