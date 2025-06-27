@@ -33,7 +33,6 @@ jobs:
             -destination 'platform=iOS Simulator,name=iPhone 16 Plus,OS:18.1' \
             ONLY_ACTIVE_ARCH=YES | xcpretty
 
-
         - name: Notify Teams on Failure
           if: failure()
           run: |
@@ -41,7 +40,7 @@ jobs:
               -d '{"text": "🚨 iOS CI build failed for commit ${{ github.sha }} by ${{ github.actor }}"}' \
               ${{ secrets.TEAMS_WEBHOOK_URL }}
 
-        - name: Notify Teams on Success
+       -name: Notify Teams on Success
         if: success()
         run: |
           curl -H 'Content-Type: application/json' \
