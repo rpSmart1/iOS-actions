@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        
+
       - name: Build for Testing
         run: |
           set -o pipefail && \
@@ -23,6 +23,7 @@ jobs:
             -destination 'platform=iOS Simulator,name=iPhone SE (3rd generation),OS=18.1' \
             ONLY_ACTIVE_ARCH=YES | xcpretty
   build:
+    needs: test
     runs-on: macos-14
     steps:
       - name: Checkout code
