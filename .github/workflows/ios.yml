@@ -47,11 +47,9 @@ jobs:
         run: |
           set -o pipefail && \
           xcodebuild test \
-            -project iOS-actions.xcodeproj \
             -scheme iOS-actions \
-            -sdk iphonesimulator \
             -destination 'platform=iOS Simulator,name=iPhone SE (3rd generation),OS=18.1' \
-            ONLY_ACTIVE_ARCH=YES | xcpretty
+            -enableCodeCoverage YES
 
       - name: Notify Teams on Failure
         if: failure()
