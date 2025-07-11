@@ -50,7 +50,13 @@ jobs:
             -scheme iOS-actions \
             -destination 'platform=iOS Simulator,name=iPhone SE (3rd generation),OS=18.1' \
             -enableCodeCoverage YES
-
+      - name: Run test without buiding
+        run: |
+          set -o pipefail && \
+          xcodebuild test-without-building \
+           -scheme iOS-actions \
+           -destination 'platform=iOS Simulator,name=iPhone SE (3rd generation),OS=18.1' \
+           -enableCodeCoverage YES
       - name: Notify Teams on Failure
         if: failure()
         run: |
