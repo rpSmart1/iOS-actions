@@ -7,9 +7,23 @@ on:
     branches: [ "main" ]
 
 jobs:
+  test:
+    runs-on: macos-14
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        
+      - name: Build for Testing
+        run: |
+          set -o pipefail && \
+          xcodebuild build-for-testing \
+            -project iOS-actions.xcodeproj \
+            -scheme iOS-actions \
+            -sdk iphonesimulator \
+            -destination 'platform=iOS Simulator,name=iPhone SE (3rd generation),OS=18.1' \
+            ONLY_ACTIVE_ARCH=YES | xcpretty
   build:
     runs-on: macos-14
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
