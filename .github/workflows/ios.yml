@@ -56,6 +56,7 @@ jobs:
           xcodebuild test-without-building \
            -scheme iOS-actions \
            -destination 'platform=iOS Simulator,name=iPhone SE (3rd generation),OS=18.1' \
+           -only-testing: iOS-actionsTests\
            -enableCodeCoverage YES
       - name: Notify Teams on Failure
         if: failure()
