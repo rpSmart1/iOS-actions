@@ -46,7 +46,7 @@ jobs:
       - name: Build Project
         run: |
           set -o pipefail && \
-          xcodebuild build \
+          xcodebuild test \
             -project iOS-actions.xcodeproj \
             -scheme iOS-actions \
             -sdk iphonesimulator \
