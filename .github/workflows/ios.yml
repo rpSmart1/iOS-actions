@@ -41,7 +41,7 @@ jobs:
       # - name: Install CocoaPods
       #   run: |
       #     gem install cocoapods
-      #     pod install
+      #     pod instal
 
       - name: Build Project
         run: |
