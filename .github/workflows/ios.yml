@@ -62,12 +62,14 @@ jobs:
         if: failure()
         run: |
           curl -H 'Content-Type: application/json' \
-            -d '{{"text": "🚨 iOS CI build failed for commit ${{ github.sha }} by ${{ github.actor }}"}}' \
+            -d "{\"text\": \"🚨 iOS CI build failed for commit ${{ github.sha }} by ${{ github.actor }}\"}" \
             ${{ secrets.TEAMS_WEBHOOK_URL }}
 
       - name: Notify Teams on Success
         if: success()
         run: |
           curl -H 'Content-Type: application/json' \
-            -d '{{"text": "✅ iOS CI build passed successfully for commit ${{ github.sha }} by ${{ github.actor }}"}}' \
+            -d "{\"text\": \"✅ iOS CI build passed successfully for commit ${{ github.sha }} by ${{ github.actor }}\"}" \
             ${{ secrets.TEAMS_WEBHOOK_URL }}
+
+
