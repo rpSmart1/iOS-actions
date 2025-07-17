@@ -48,14 +48,14 @@ jobs:
           set -o pipefail && \
           xcodebuild build-for-testing \
             -scheme iOS-actions \
-            -destination 'platform=iOS Simulator,name=iPhone 11,OS=17.2' \
+            -destination 'platform=iOS Simulator,name=iPhone 16 Pro,OS=18.0' \
             -enableCodeCoverage YES
       - name: Run test without buiding
         run: |
           set -o pipefail && \
           xcodebuild test-without-building \
            -scheme iOS-actions \
-           -destination 'platform=iOS Simulator,name=iPhone 11,OS=17.2' \
+           -destination 'platform=iOS Simulator,name=iPhone 16 Pro,OS=18.0' \
            -only-testing:iOS-actionsUITests \
            -enableCodeCoverage YES
       - name: Notify Teams on Failure
