@@ -50,7 +50,7 @@ jobs:
           APP_STORE_CONNECT_API_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_API_ISSUER_ID }}
           APP_STORE_CONNECT_API_KEY: ${{ secrets.APP_STORE_CONNECT_API_KEY }}
         run: |
-          bundle exec fastlane beta
+          fastlane beta
 
       - name: Notify Teams on Failure
         if: failure()
