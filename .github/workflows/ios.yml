@@ -58,6 +58,17 @@ jobs:
            -destination 'platform=iOS Simulator,name=iPhone 16 Pro,OS=18.0' \
            -only-testing:iOS-actionsTests \
            -enableCodeCoverage YES
+
+      
+      - name: Build and upload to TestFlight
+        env:
+          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+          APP_STORE_CONNECT_API_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}
+          APP_STORE_CONNECT_API_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_API_ISSUER_ID }}
+          APP_STORE_CONNECT_API_KEY: ${{ secrets.APP_STORE_CONNECT_API_KEY }}
+        run: |
+          bundle exec fastlane beta
+
       - name: Notify Teams on Failure
         if: failure()
         run: |

@@ -1,0 +1,33 @@
+default_platform(:ios)
+
+platform :ios do
+  desc "Build and upload to TestFlight"
+  lane :beta do
+    # Unlock keychain if needed
+    unlock_keychain(
+      path: "login.keychain",
+      password: ENV["MATCH_PASSWORD"]
+    )
+
+    # Fetch provisioning profiles and certificates
+    match(
+      type: "appstore",
+      readonly: false
+    )
+
+    # Increment build number
+    increment_build_number(
+      xcodeproj: "iOS-actions.xcodeproj"
+    )
+
+    # Build the app
+    build_app(
+      scheme: "iOS-actions"
+    )
+
+    # Upload to TestFlight
+    upload_to_testflight(
+      skip_waiting_for_build_processing: true
+    )
+  end
+end
