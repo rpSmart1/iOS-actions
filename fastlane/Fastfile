@@ -13,7 +13,8 @@ platform :ios do
       type: "appstore",
       readonly: false,
       api_key: api_key,
-      git_url: ENV["MATCH_REPO_URL"]
+      git_url: ENV["MATCH_REPO_URL"],
+      app_identifier: "ph.com.smart.Smartnew"
     )
 
 
