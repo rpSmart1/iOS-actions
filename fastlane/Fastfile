@@ -11,7 +11,7 @@ platform :ios do
     
     match(
       type: "appstore",
-      readonly: false,
+      readonly: true,
       api_key: api_key,
       git_url: ENV["MATCH_REPO_URL"],
       app_identifier: "ph.com.smart.Smartnew"
